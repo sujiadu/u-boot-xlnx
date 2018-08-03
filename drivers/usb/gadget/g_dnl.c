@@ -58,12 +58,15 @@ static struct usb_device_descriptor device_desc = {
 	.bLength = sizeof device_desc,
 	.bDescriptorType = USB_DT_DEVICE,
 
-	.bcdUSB = __constant_cpu_to_le16(0x0200),
+	/*.bcdUSB = __constant_cpu_to_le16(0x0200),*/
+	.bcdUSB =0x0200,
 	.bDeviceClass = USB_CLASS_PER_INTERFACE,
 	.bDeviceSubClass = 0, /*0x02:CDC-modem , 0x00:CDC-serial*/
 
-	.idVendor = __constant_cpu_to_le16(CONFIG_USB_GADGET_VENDOR_NUM),
-	.idProduct = __constant_cpu_to_le16(CONFIG_USB_GADGET_PRODUCT_NUM),
+	/*.idVendor = __constant_cpu_to_le16(CONFIG_USB_GADGET_VENDOR_NUM),
+        .idProduct = __constant_cpu_to_le16(CONFIG_USB_GADGET_PRODUCT_NUM),*/
+        /*.idVendor =0;
+         .idProduct =1;*/
 	/* .iProduct = DYNAMIC */
 	/* .iSerialNumber = DYNAMIC */
 	.bNumConfigurations = 1,
@@ -260,7 +263,7 @@ static int g_dnl_bind(struct usb_composite_dev *cdev)
 	else {
 		debug("%s: controller '%s' not recognized\n",
 			__func__, gadget->name);
-		device_desc.bcdDevice = __constant_cpu_to_le16(0x9999);
+		/*device_desc.bcdDevice = __constant_cpu_to_le16(0x9999);*/
 	}
 
 	debug("%s: calling usb_gadget_connect for "

@@ -15,6 +15,7 @@
 
 int do_thor_down(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 {
+#if 0
 	if (argc < 4)
 		return CMD_RET_USAGE;
 
@@ -61,6 +62,8 @@ done:
 	dfu_free_entities();
 
 	return ret;
+#endif 
+        return 0;
 }
 
 U_BOOT_CMD(thordown, CONFIG_SYS_MAXARGS, 1, do_thor_down,
